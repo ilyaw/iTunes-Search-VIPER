@@ -14,6 +14,7 @@
 		0900406626983F1E00297F03 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0900406526983F1E00297F03 /* SongDetailView.swift */; };
 		0908DE81268F739400F2E1C4 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0908DE80268F739400F2E1C4 /* SearchPresenter.swift */; };
 		0908DE84268F7DAC00F2E1C4 /* SearchBulder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0908DE83268F7DAC00F2E1C4 /* SearchBulder.swift */; };
+		096E04B9269B399800386451 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096E04B8269B399800386451 /* Observable.swift */; };
 		09AEE4282693642100FBE233 /* AppDetailWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AEE4272693642100FBE233 /* AppDetailWhatsNewView.swift */; };
 		09AEE42A2693650300FBE233 /* AppDetailWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AEE4292693650300FBE233 /* AppDetailWhatsNewViewController.swift */; };
 		09AEE42C269374F100FBE233 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 09AEE42B269374F100FBE233 /* Localizable.stringsdict */; };
@@ -57,6 +58,7 @@
 		0900406526983F1E00297F03 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		0908DE80268F739400F2E1C4 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		0908DE83268F7DAC00F2E1C4 /* SearchBulder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBulder.swift; sourceTree = "<group>"; };
+		096E04B8269B399800386451 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		09AEE4272693642100FBE233 /* AppDetailWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewView.swift; sourceTree = "<group>"; };
 		09AEE4292693650300FBE233 /* AppDetailWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewViewController.swift; sourceTree = "<group>"; };
 		09AEE42B269374F100FBE233 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 				0908DE83268F7DAC00F2E1C4 /* SearchBulder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		096E04B7269B397B00386451 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				096E04B8269B399800386451 /* Observable.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 		09AEE42F269388CB00FBE233 /* Presenter */ = {
@@ -370,6 +380,7 @@
 		F8A1E03D224850CA00FE6448 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				096E04B7269B397B00386451 /* Observable */,
 				E0E1D2ED2035AA980011E01A /* AppDelegate */,
 				F8A1E03E224850E500FE6448 /* Monads */,
 				E0E1D359203ADCE10011E01A /* NetworkManager */,
@@ -560,6 +571,7 @@
 				F8114FC122A3E5EE00102830 /* AppCellModel.swift in Sources */,
 				09AEE42A2693650300FBE233 /* AppDetailWhatsNewViewController.swift in Sources */,
 				09AEE43526939B6F00FBE233 /* AppDetailScreenshotsViewController.swift in Sources */,
+				096E04B9269B399800386451 /* Observable.swift in Sources */,
 				09FB1B7F268F42FE009257EC /* AppDetailHeadViewController.swift in Sources */,
 				09AEE4332693947100FBE233 /* AppDetailConstants.swift in Sources */,
 				0900405D269789D600297F03 /* SongCellModel.swift in Sources */,
