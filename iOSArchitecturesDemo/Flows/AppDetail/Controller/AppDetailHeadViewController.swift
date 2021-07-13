@@ -10,6 +10,7 @@ import UIKit
 
 class AppDetailHeadViewController: UIViewController {
     
+    private let presenter: AppDetailViewOutput
     private let app: ITunesApp
     private let imageLoader = ImageDownloader()
     
@@ -17,8 +18,9 @@ class AppDetailHeadViewController: UIViewController {
         return self.view as! AppDetailHeaderView
     }
     
-    init(app: ITunesApp) {
+    init(app: ITunesApp, presenter: AppDetailViewOutput) {
         self.app = app
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,6 +43,12 @@ class AppDetailHeadViewController: UIViewController {
         
         appDetailHeadView.titleLabel.text = app.appName
         appDetailHeadView.subtitleLabel.text = app.company
+        
+        appDetailHeadView.openButton.addTarget(self, action: #selector(didTapOpenApp), for: .touchUpInside)
+    }
+    
+    @objc private func didTapOpenApp() {
+        presenter.openAppInITunes(app: app)
     }
     
     private func downloadImage() {

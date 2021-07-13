@@ -94,7 +94,7 @@ extension SearchViewController: UITableViewDataSource {
             return searchResultSongs.count
         }
     }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch searchMode {
         case .apps:

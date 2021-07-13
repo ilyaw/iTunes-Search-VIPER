@@ -14,7 +14,7 @@ final class AppDetailViewController: UIViewController {
     
     private let presenter: AppDetailViewOutput
     
-    lazy var headerViewController = AppDetailHeadViewController(app: app)
+    lazy var headerViewController = AppDetailHeadViewController(app: app, presenter: presenter)
     lazy var infoViewController = AppDetailInfoViewController(app: app)
     lazy var whatsNewViewController = AppDetailWhatsNewViewController(app: app)
     lazy var screenshotsViewController = AppDetailScreenshotsViewController(app: app)
@@ -124,7 +124,7 @@ final class AppDetailViewController: UIViewController {
             whatsNewViewController.view.topAnchor.constraint(equalTo: self.infoViewController.view.bottomAnchor, constant: 10.0),
             whatsNewViewController.view.leftAnchor.constraint(equalTo: self.appDetailView.safeAreaLayoutGuide.leftAnchor),
             whatsNewViewController.view.rightAnchor.constraint(equalTo: self.appDetailView.safeAreaLayoutGuide.rightAnchor),
-            whatsNewViewController.view.heightAnchor.constraint(equalToConstant: AppDetailConstants.whatsNewViewSize + sizeText.height),
+            whatsNewViewController.view.heightAnchor.constraint(equalToConstant: AppDetailConstants.whatsNewViewSize + sizeText),
         ])
     }
     
@@ -144,39 +144,6 @@ final class AppDetailViewController: UIViewController {
         ])
     }
     
-    
-//    private func qwe() {
-//        self.addChild(qweView)
-//        scrollView.addSubview(qweView.view)
-//        self.qweView.didMove(toParent: self)
-//
-//        qweView.view.translatesAutoresizingMaskIntoConstraints = false
-//
-//        NSLayoutConstraint.activate([
-//            qweView.view.topAnchor.constraint(equalTo: self.whatsNewViewController.view.bottomAnchor, constant: 10.0),
-//            qweView.view.leftAnchor.constraint(equalTo: self.appDetailView.safeAreaLayoutGuide.leftAnchor),
-//            qweView.view.rightAnchor.constraint(equalTo: self.appDetailView.safeAreaLayoutGuide.rightAnchor),
-//            qweView.view.heightAnchor.constraint(equalToConstant: 150),
-//            qweView.view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-//        ])
-//    }
-    
-    
-    
-//    private func configureNavigationController() {
-//        self.navigationController?.navigationBar.tintColor = UIColor.white;
-//        self.navigationItem.largeTitleDisplayMode = .never
-//    }
-//
-//    private func downloadImage() {
-//        guard let url = self.app?.iconUrl else { return }
-//        self.appDetailView.throbber.startAnimating()
-//        self.imageDownloader.getImage(fromUrl: url) { (image, error) in
-//            self.appDetailView.throbber.stopAnimating()
-//            guard let image = image else { return }
-//            self.appDetailView.imageView.image = image
-//        }
-//    }
 }
 
 extension AppDetailViewController: AppDetailViewInput {    

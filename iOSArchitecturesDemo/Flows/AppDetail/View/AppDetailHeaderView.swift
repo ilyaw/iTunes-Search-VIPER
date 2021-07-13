@@ -48,7 +48,6 @@ class AppDetailHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setUI()
     }
     
@@ -68,11 +67,6 @@ class AppDetailHeaderView: UIView {
         setConstraints()
     }
     
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-//        
-//        backgroundColor = .blue
-//    }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([

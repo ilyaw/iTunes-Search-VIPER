@@ -15,6 +15,8 @@
 		0908DE81268F739400F2E1C4 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0908DE80268F739400F2E1C4 /* SearchPresenter.swift */; };
 		0908DE84268F7DAC00F2E1C4 /* SearchBulder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0908DE83268F7DAC00F2E1C4 /* SearchBulder.swift */; };
 		096E04B9269B399800386451 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096E04B8269B399800386451 /* Observable.swift */; };
+		096E04C4269DDBF600386451 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096E04C3269DDBF600386451 /* SearchRouter.swift */; };
+		096E04C8269DED3D00386451 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096E04C7269DED3D00386451 /* SearchInteractor.swift */; };
 		09AEE4282693642100FBE233 /* AppDetailWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AEE4272693642100FBE233 /* AppDetailWhatsNewView.swift */; };
 		09AEE42A2693650300FBE233 /* AppDetailWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AEE4292693650300FBE233 /* AppDetailWhatsNewViewController.swift */; };
 		09AEE42C269374F100FBE233 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 09AEE42B269374F100FBE233 /* Localizable.stringsdict */; };
@@ -59,6 +61,8 @@
 		0908DE80268F739400F2E1C4 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		0908DE83268F7DAC00F2E1C4 /* SearchBulder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBulder.swift; sourceTree = "<group>"; };
 		096E04B8269B399800386451 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		096E04C3269DDBF600386451 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		096E04C7269DED3D00386451 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		09AEE4272693642100FBE233 /* AppDetailWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewView.swift; sourceTree = "<group>"; };
 		09AEE4292693650300FBE233 /* AppDetailWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewViewController.swift; sourceTree = "<group>"; };
 		09AEE42B269374F100FBE233 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
@@ -178,6 +182,22 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		096E04C1269DDB4000386451 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				096E04C7269DED3D00386451 /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		096E04C2269DDB5300386451 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				096E04C3269DDBF600386451 /* SearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		09AEE42F269388CB00FBE233 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +274,8 @@
 		E0E1D2A62034A36C0011E01A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				096E04C2269DDB5300386451 /* Router */,
+				096E04C1269DDB4000386451 /* Interactor */,
 				0908DE82268F7DA400F2E1C4 /* Builder */,
 				0908DE7F268F738A00F2E1C4 /* Presenter */,
 				F8A97B3622498F0C00FB2C0E /* View */,
@@ -574,9 +596,11 @@
 				096E04B9269B399800386451 /* Observable.swift in Sources */,
 				09FB1B7F268F42FE009257EC /* AppDetailHeadViewController.swift in Sources */,
 				09AEE4332693947100FBE233 /* AppDetailConstants.swift in Sources */,
+				096E04C8269DED3D00386451 /* SearchInteractor.swift in Sources */,
 				0900405D269789D600297F03 /* SongCellModel.swift in Sources */,
 				09AEE431269388DB00FBE233 /* AppDetailPresenter.swift in Sources */,
 				0908DE81268F739400F2E1C4 /* SearchPresenter.swift in Sources */,
+				096E04C4269DDBF600386451 /* SearchRouter.swift in Sources */,
 				0908DE84268F7DAC00F2E1C4 /* SearchBulder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
