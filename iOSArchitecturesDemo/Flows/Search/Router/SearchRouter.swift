@@ -11,11 +11,12 @@ import UIKit
 protocol SearchRouterInput {
     func openDetails(for app: ITunesApp)
     func openAppInITunes(_ app: ITunesApp)
-    func openSongDetails(for app: ITunesSong)
+//    func openSongDetails(for song: ITunesSong)
+    func openSongDetails(for index: Int, songs: [ITunesSong])
 }
 
 class SearchRouter: SearchRouterInput {
-    
+
     weak var viewController: UIViewController?
     
     func openDetails(for app: ITunesApp) {
@@ -30,8 +31,16 @@ class SearchRouter: SearchRouterInput {
         UIApplication.shared.open(url, options: [:])
     }
     
-    func openSongDetails(for app: ITunesSong) {
-        //
+    func openSongDetails(for index: Int, songs: [ITunesSong]) {
+        let songDetailVC = SongDetailViewController(selectIndex: index, songs: songs)
+        
+        viewController?.navigationController?.pushViewController(songDetailVC, animated: true)
     }
+    
+//    func openSongDetails(for song: ITunesSong) {
+//        let songDetailVC = SongDetailViewController(song: song)
+//
+//        viewController?.navigationController?.pushViewController(songDetailVC, animated: true)
+//    }
     
 }

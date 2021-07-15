@@ -27,7 +27,6 @@ class AppDetailScreenshotsView: UIView {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .white
-      
         collectionView.register(ScreenshotsCell.self, forCellWithReuseIdentifier: ScreenshotsCell.reuseId)
         return collectionView
     }()
@@ -65,7 +64,7 @@ class AppDetailScreenshotsView: UIView {
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10.0),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: AppDetailConstants.leftIndent),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: AppDetailConstants.rightIndent),
-            collectionView.heightAnchor.constraint(equalToConstant: AppDetailConstants.getOptimalSize().height)
+            collectionView.heightAnchor.constraint(equalToConstant: AppDetailConstants.getOptimalSize().height + 5)
         ])
     }
 }

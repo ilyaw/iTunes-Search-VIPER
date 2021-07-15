@@ -20,7 +20,7 @@ protocol SearchViewInput: AnyObject {
 protocol SearchViewOutput: AnyObject {
     func viewDidSearch(with query: String, searchMode: SearchMode)
     func viewDidSelectApp(_ app: ITunesApp)
-    func viewDidSelectSong(_ song: ITunesSong)
+    func viewDidSelectSong(_ indexSong: Int)
 }
 
 class SearchPresenter {
@@ -92,8 +92,7 @@ extension SearchPresenter: SearchViewOutput {
         self.router.openDetails(for: app)
     }
     
-    func viewDidSelectSong(_ song: ITunesSong) {
-//        self.router.openDetails(for: song)
-
+    func viewDidSelectSong(_ indexSong: Int) {
+        self.router.openSongDetails(for: indexSong, songs: viewInput?.searchResultSongs ?? [])
     }
 }

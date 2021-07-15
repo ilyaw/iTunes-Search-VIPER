@@ -128,8 +128,8 @@ extension SearchViewController: UITableViewDelegate {
             let app = searchResultApps[indexPath.row]
             presenter.viewDidSelectApp(app)
         case .songs:
-            let song = searchResultSongs[indexPath.row]
-            presenter.viewDidSelectSong(song)
+//            let song = searchResultSongs[indexPath.row]
+            presenter.viewDidSelectSong(indexPath.row)
         }
     }
 }

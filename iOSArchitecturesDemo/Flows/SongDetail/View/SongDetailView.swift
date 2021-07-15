@@ -10,17 +10,22 @@ import UIKit
 
 class SongDetailView: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.configureUI()
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        self.configureUI()
+//    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureUI()
+        
     }
     
     required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
         super.init(coder: coder)
         configureUI()
     }
-    
+//
     private func configureUI() {
         backgroundColor = .white
     }
