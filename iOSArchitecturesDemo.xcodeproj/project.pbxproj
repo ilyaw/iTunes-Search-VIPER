@@ -359,8 +359,8 @@
 			isa = PBXGroup;
 			children = (
 				E0E1D3D3203C4AA50011E01A /* UIColor + Extension.swift */,
-				097A050226A0834B00E0DDE7 /* Nib.swift */,
 				09131C4F26A1A77F00CC4D42 /* CMTime + Extension.swift */,
+				097A050226A0834B00E0DDE7 /* Nib.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

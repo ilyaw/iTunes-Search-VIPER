@@ -16,8 +16,8 @@ class SongCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "noImage")
-        imageView.layer.cornerRadius = (SongDetailConstants.smallArtworkSize.width / 2)
-        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -25,10 +25,27 @@ class SongCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16.0)
+        label.font = UIFont.systemFont(ofSize: 17.0, weight: .medium)
         return label
     }()
-  
+    
+    private(set) lazy var artistLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .grey
+        label.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
+        return label
+    }()
+    
+    private(set) lazy var collectionNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .grey
+        label.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
+        return label
+    }()
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -41,6 +58,8 @@ class SongCell: UITableViewCell {
     
     func configure(with model: SongCellModel) {
         titleLabel.text = model.songTitle
+        artistLabel.text = model.authorTitle
+        collectionNameLabel.text = model.albumTitle
         
         if let urlPhoto = model.coverPhoto {
             downloadImage(urlPhoto)
@@ -48,19 +67,9 @@ class SongCell: UITableViewCell {
     }
     
     private func downloadImage(_ url: String) {
-        if let image = ThreadSaveMemoryCache.shared.get(for: url) {
-            self.coverImageView.image = image
-            return
-        }
-        
-        DispatchQueue.global().async {
-            if let url = URL(string: url),
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.coverImageView.image = image
-                    ThreadSaveMemoryCache.shared.set(for: url, image: image)
-                }
+        ImageDownloader.getImage(fromUrl: url) { [weak self] (image, _) in
+            DispatchQueue.main.async {
+                self?.coverImageView.image = image
             }
         }
     }
@@ -68,6 +77,8 @@ class SongCell: UITableViewCell {
     private func setupCell() {
         self.contentView.addSubview(coverImageView)
         self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(artistLabel)
+        self.contentView.addSubview(collectionNameLabel)
         
         setConstraints()
     }
@@ -82,13 +93,21 @@ class SongCell: UITableViewCell {
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.0),
             self.titleLabel.leftAnchor.constraint(equalTo: self.coverImageView.rightAnchor, constant: 8.0),
             self.titleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -40.0),
-            self.titleLabel.centerYAnchor.constraint(equalTo: coverImageView.centerYAnchor)
+            
+            self.artistLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 5.0),
+            self.artistLabel.leftAnchor.constraint(equalTo: self.coverImageView.rightAnchor, constant: 8.0),
+            self.artistLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -40.0),
+
+            self.collectionNameLabel.topAnchor.constraint(equalTo: self.artistLabel.bottomAnchor, constant: 5.0),
+            self.collectionNameLabel.leftAnchor.constraint(equalTo: self.coverImageView.rightAnchor, constant: 8.0),
+            self.collectionNameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -40.0),
         ])
     }
     
     override func prepareForReuse() {
         titleLabel.text = nil
+        artistLabel.text = nil
+        collectionNameLabel.text = nil
         coverImageView.image = nil
     }
-    
 }

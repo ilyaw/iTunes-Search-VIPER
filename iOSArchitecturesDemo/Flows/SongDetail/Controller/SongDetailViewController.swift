@@ -61,13 +61,13 @@ class SongDetailViewController: UIViewController {
             }
         })
         
-        viewModel?.trackTitleLabel.addObserver(self, closure: { [weak self] (value, _) in
+        viewModel?.trackTitle.addObserver(self, closure: { [weak self] (value, _) in
             DispatchQueue.main.async {
                 self?.trackTitleLabel.text = value
             }
         })
         
-        viewModel?.authorTitleLabel.addObserver(self, closure: { [weak self] (value, _) in
+        viewModel?.authorTitle.addObserver(self, closure: { [weak self] (value, _) in
             DispatchQueue.main.async {
                 self?.authorTitleLabel.text = value
             }
@@ -79,7 +79,7 @@ class SongDetailViewController: UIViewController {
             }
         })
         
-        viewModel?.trackImageTransofrm.addObserver(self, closure: { [weak self] (value, _) in
+        viewModel?.trackImageTransoform.addObserver(self, closure: { [weak self] (value, _) in
             UIView.animate(withDuration: 1,
                            delay: 0,
                            usingSpringWithDamping: 0.5,

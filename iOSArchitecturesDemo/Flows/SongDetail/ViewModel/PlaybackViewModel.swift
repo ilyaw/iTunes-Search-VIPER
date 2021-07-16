@@ -21,24 +21,24 @@ protocol PlaybackViewModelInput {
 protocol PlaybackViewModelOutput {
     var imageView: Observable<UIImage?> { get }
     var playPauseTrackImage: Observable<UIImage?> { get }
-    var trackImageTransofrm: Observable<CGAffineTransform> { get }
+    var trackImageTransoform: Observable<CGAffineTransform> { get }
     var currentTime: Observable<Float> { get }
     var currentTimeText: Observable<String> { get }
     var durationTimeText: Observable<String> { get }
-    var trackTitleLabel: Observable<String> { get }
-    var authorTitleLabel: Observable<String> { get }
+    var trackTitle: Observable<String> { get }
+    var authorTitle: Observable<String> { get }
 }
 
 class PlaybackViewModel: PlaybackViewModelOutput {
 
     var imageView = Observable<UIImage?>(nil)
     var playPauseTrackImage = Observable<UIImage?>(nil)
-    var trackImageTransofrm = Observable<CGAffineTransform>(.identity)
+    var trackImageTransoform = Observable<CGAffineTransform>(.identity)
     var currentTime = Observable<Float>(0.0)
     var currentTimeText = Observable<String>("")
     var durationTimeText = Observable<String>("")
-    var trackTitleLabel = Observable<String>("")
-    var authorTitleLabel = Observable<String>("")
+    var trackTitle = Observable<String>("")
+    var authorTitle = Observable<String>("")
     
     private var currentIndex: Int
     private let songs: [ITunesSong]
@@ -105,11 +105,11 @@ extension PlaybackViewModel: PlaybackViewModelInput {
     }
     
     private func setElementsOfSong() {
-        trackTitleLabel.value = currentSong.trackName
-        authorTitleLabel.value = currentSong.artistName ?? "No name"
+        trackTitle.value = currentSong.trackName
+        authorTitle.value = currentSong.artistName ?? "No name"
         
         playPauseTrackImage.value = UIImage(named: "pause")
-        trackImageTransofrm.value = .identity
+        trackImageTransoform.value = .identity
     }
     
     private func updateCurrentTimeSlider() {
@@ -136,11 +136,11 @@ extension PlaybackViewModel: PlaybackViewModelInput {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseTrackImage.value = UIImage(named: "pause")
-            trackImageTransofrm.value = .identity
+            trackImageTransoform.value = .identity
         } else {
             player.pause()
             playPauseTrackImage.value = UIImage(named: "play")
-            trackImageTransofrm.value = CGAffineTransform(scaleX: scale, y: scale)
+            trackImageTransoform.value = CGAffineTransform(scaleX: scale, y: scale)
         }
     }
     
