@@ -49,12 +49,6 @@ class AppDetailScreenshotsView: UIView {
         setConstraints()
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-
-//        backgroundColor = .blue
-    }
-    
     private func setConstraints() {
         
         NSLayoutConstraint.activate([

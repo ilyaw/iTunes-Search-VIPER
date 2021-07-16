@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AppDetailViewController: UIViewController {
+final class AppDetailViewController: UIViewController, AppDetailViewInput {
     
     public var app: ITunesApp
     
@@ -143,9 +143,5 @@ final class AppDetailViewController: UIViewController {
             screenshotsViewController.view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
-    
-}
-
-extension AppDetailViewController: AppDetailViewInput {    
     
 }

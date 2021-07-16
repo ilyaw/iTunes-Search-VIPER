@@ -25,12 +25,6 @@ final class ImageDownloader {
         downloadImage(url, completion)
     }
     
-    public static func getImage(fromUrl url: URL?, completion: @escaping DownloadImageCompletion) {
-        guard let url = url else { return }
-        
-        downloadImage(url, completion)
-    }
-    
     fileprivate static func downloadImage(_ url: URL, _ completion: @escaping DownloadImageCompletion) {
         
         if let image = ThreadSaveMemoryCache.shared.get(for: url) {

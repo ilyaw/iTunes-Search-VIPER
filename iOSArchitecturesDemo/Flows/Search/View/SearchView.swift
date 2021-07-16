@@ -124,5 +124,4 @@ final class SearchView: UIView {
         let searchMode = SearchMode(rawValue: modeSegmentControl.selectedSegmentIndex) ?? .apps
         delegate?.didSelectSearchMode(with: searchMode)
     }
-    
 }
