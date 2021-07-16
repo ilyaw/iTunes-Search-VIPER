@@ -13,9 +13,12 @@ public struct ITunesSong: Codable {
     public var trackName: String
     public var artistName: String?
     public var collectionName: String?
-    public var smallArtwork: String?
-    public var bigArtwork: String?
+    public var trackImage: String?
     public var previewUrl: String?
+    
+    public var bigArtwork: String? {
+        return trackImage?.replacingOccurrences(of: "60x60", with: "600x600")
+    }
     
     // MARK: - Codable
     
@@ -23,8 +26,8 @@ public struct ITunesSong: Codable {
         case trackName = "trackName"
         case artistName = "artistName"
         case collectionName = "collectionName"
-        case smallArtwork = "artworkUrl60"
-        case bigArtwork = "artworkUrl100"
+        case trackImage = "artworkUrl60"
+//        case bigArtwork = "artworkUrl100"
         case previewUrl = "previewUrl"
     }
     
@@ -34,13 +37,13 @@ public struct ITunesSong: Codable {
                   artistName: String?,
                   collectionName: String?,
                   smallArtwork: String?,
-                  bigArtwork: String?,
+//                  bigArtwork: String?,
                   previewUrl: String?) {
         self.trackName = trackName
         self.artistName = artistName
         self.collectionName = collectionName
-        self.smallArtwork = smallArtwork
-        self.bigArtwork = bigArtwork
+        self.trackImage = smallArtwork
+//        self.bigArtwork = bigArtwork
         self.previewUrl = previewUrl
     }
 }

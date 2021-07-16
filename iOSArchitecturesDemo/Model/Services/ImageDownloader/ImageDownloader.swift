@@ -13,8 +13,25 @@ typealias DownloadImageCompletion = (_ image: UIImage?, _ error: Error?) -> Void
 
 final class ImageDownloader {
     
-    public func getImage(fromUrl url: URLConvertible, completion: @escaping DownloadImageCompletion) {
+    public static func getImage(fromUrl url: URLConvertible, completion: @escaping DownloadImageCompletion) {
         guard let url = try? url.asURL() else { return }
+        
+        downloadImage(url, completion)
+    }
+    
+    public static func getImage(fromUrl url: String, completion: @escaping DownloadImageCompletion) {
+        guard let url = URL(string: url) else { return }
+        
+        downloadImage(url, completion)
+    }
+    
+    public static func getImage(fromUrl url: URL?, completion: @escaping DownloadImageCompletion) {
+        guard let url = url else { return }
+        
+        downloadImage(url, completion)
+    }
+    
+    fileprivate static func downloadImage(_ url: URL, _ completion: @escaping DownloadImageCompletion) {
         
         if let image = ThreadSaveMemoryCache.shared.get(for: url) {
             completion(image, nil)
@@ -48,4 +65,5 @@ final class ImageDownloader {
             completion(image, nil)
         })
     }
+    
 }

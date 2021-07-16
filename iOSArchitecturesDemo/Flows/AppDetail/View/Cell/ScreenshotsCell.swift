@@ -40,18 +40,10 @@ class ScreenshotsCell: UICollectionViewCell {
     }
     
     func setup(with url: String) {
-        if let image = ThreadSaveMemoryCache.shared.get(for: url) {
-            self.screenshot.image = image
-            return
-        }
-        
-        DispatchQueue.global().async {
-            if let url = URL(string: url),
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
+        ImageDownloader.getImage(fromUrl: url) { [weak self] (image, _) in
+            if let image = image {
                 DispatchQueue.main.async {
-                    self.screenshot.image = image
-                    ThreadSaveMemoryCache.shared.set(for: url, image: image)
+                    self?.screenshot.image = image
                 }
             }
         }

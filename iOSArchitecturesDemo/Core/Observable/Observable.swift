@@ -64,6 +64,8 @@ public class Observable<Type> {
         self.value = value
     }
 
+
+
     // MARK: - Managing Observers
     private var callbacks: [Callback] = []
 

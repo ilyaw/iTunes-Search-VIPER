@@ -12,7 +12,6 @@ class AppDetailHeadViewController: UIViewController {
     
     private let presenter: AppDetailViewOutput
     private let app: ITunesApp
-    private let imageLoader = ImageDownloader()
     
     private var appDetailHeadView: AppDetailHeaderView {
         return self.view as! AppDetailHeaderView
@@ -54,11 +53,10 @@ class AppDetailHeadViewController: UIViewController {
     private func downloadImage() {
         guard let url = app.iconUrl else { return }
         
-        imageLoader.getImage(fromUrl: url) { [weak self] (image, error) in
+        ImageDownloader.getImage(fromUrl: url) { [weak self] (image, error) in
             guard let self = self else { return }
             
             if let error = error {
-                //add alert
                 print(error.localizedDescription)
                 return
             }
