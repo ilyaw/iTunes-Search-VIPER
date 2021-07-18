@@ -11,6 +11,9 @@ import Alamofire
 
 final class NetworkManager {
     
+    static let cacheApps = NSCache<NSString, NSArray>()
+    static let cacheSongs = NSCache<NSString, NSArray>()
+    
     public typealias DataCompletion = (Result<Data>) -> (Void)
     public typealias JSONCompletion = (Result<[String: Any]?>) -> Void
     
