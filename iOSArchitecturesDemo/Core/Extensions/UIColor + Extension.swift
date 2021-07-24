@@ -9,8 +9,8 @@
 import UIKit
 
 public extension UIColor {
-    
     static let varna = UIColor.rgb(40.0, 35.0, 80.0)
+    static let grey = UIColor.rgb(145, 145, 151)
 }
 
 public extension UIColor {

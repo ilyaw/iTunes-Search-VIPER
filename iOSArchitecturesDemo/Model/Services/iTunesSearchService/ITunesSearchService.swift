@@ -49,6 +49,9 @@ final class ITunesSearchService {
                     do {
                         let result = try self.decoder.decode(ITunesSearchResult<ITunesApp>.self, from: data)
                         let apps = result.results
+                        
+                        NetworkManager.cacheApps.setObject(apps as NSArray, forKey: query as NSString)
+                        
                         completion?(.success(apps))
                     } catch {
                         print(error)
@@ -61,7 +64,7 @@ final class ITunesSearchService {
         }
     }
     
-    public func getSongs(forQuery query: String, completion: CompletionSongs?) {
+    public func getSongs(forQuery query: String, then completion: CompletionSongs?) {
         let regionCode = Locale.current.regionCode ?? defaultRegionCode
         var parameters: Parameters = [:]
         parameters[Parameter.query] = query
@@ -79,8 +82,11 @@ final class ITunesSearchService {
                 .withValue { data in
                     do {
                         let result = try self.decoder.decode(ITunesSearchResult<ITunesSong>.self, from: data)
-                        let apps = result.results
-                        completion?(.success(apps))
+                        let songs = result.results
+                        
+                        NetworkManager.cacheSongs.setObject(songs as NSArray, forKey: query as NSString)
+                        
+                        completion?(.success(songs))
                     } catch {
                         print(error)
                         completion?(.failure(error))

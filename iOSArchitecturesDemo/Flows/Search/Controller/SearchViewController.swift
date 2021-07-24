@@ -86,6 +86,10 @@ final class SearchViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 76
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch searchMode {
         case .apps:
@@ -94,7 +98,7 @@ extension SearchViewController: UITableViewDataSource {
             return searchResultSongs.count
         }
     }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch searchMode {
         case .apps:
@@ -128,8 +132,7 @@ extension SearchViewController: UITableViewDelegate {
             let app = searchResultApps[indexPath.row]
             presenter.viewDidSelectApp(app)
         case .songs:
-            let song = searchResultSongs[indexPath.row]
-            presenter.viewDidSelectSong(song)
+            presenter.viewDidSelectSong(indexPath.row)
         }
     }
 }

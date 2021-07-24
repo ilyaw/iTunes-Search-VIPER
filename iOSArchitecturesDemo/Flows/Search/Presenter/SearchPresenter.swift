@@ -20,16 +20,23 @@ protocol SearchViewInput: AnyObject {
 protocol SearchViewOutput: AnyObject {
     func viewDidSearch(with query: String, searchMode: SearchMode)
     func viewDidSelectApp(_ app: ITunesApp)
-    func viewDidSelectSong(_ song: ITunesSong)
+    func viewDidSelectSong(_ indexSong: Int)
 }
 
 class SearchPresenter {
-    private let searchService = ITunesSearchService()
     
     weak var viewInput: (UIViewController & SearchViewInput)?
     
+    let interactor: SearchInteractorInput
+    let router: SearchRouterInput
+
+    init(interactor: SearchInteractorInput, router: SearchRouterInput) {
+        self.interactor = interactor
+        self.router = router
+    }
+    
     private func requestApps(with query: String) {
-        self.searchService.getApps(forQuery: query) { [weak self] result in
+        self.interactor.requestApps(with: query) { [weak self] result in
             guard let self = self else { return }
             
             self.viewInput?.throbber(show: false)
@@ -50,7 +57,7 @@ class SearchPresenter {
     }
     
     private func requestSongs(with query: String) {
-        self.searchService.getSongs(forQuery: query) { [weak self] result in
+        self.interactor.requestSongs(with: query) { [weak self] result in
             guard let self = self else { return }
             
             self.viewInput?.throbber(show: false)
@@ -69,16 +76,6 @@ class SearchPresenter {
             }
         }
     }
-    
-    private func openAppDetails(with app: ITunesApp) {
-        let appDetailViewController = AppDetailViewController(app: app)
-        viewInput?.navigationController?.pushViewController(appDetailViewController, animated: true)
-    }
-    
-    private func openSongDetail(with song: ITunesSong) {
-//        let songDetailViewController = SongDetailViewController(song: song)
-//        viewInput?.navigationController?.pushViewController(songDetailViewController, animated: true)
-    }
 }
 
 extension SearchPresenter: SearchViewOutput {
@@ -92,10 +89,10 @@ extension SearchPresenter: SearchViewOutput {
     }
     
     func viewDidSelectApp(_ app: ITunesApp) {
-        openAppDetails(with: app)
+        self.router.openDetails(for: app)
     }
     
-    func viewDidSelectSong(_ song: ITunesSong) {
-        openSongDetail(with: song)
+    func viewDidSelectSong(_ indexSong: Int) {
+        self.router.openSongDetails(for: indexSong, songs: viewInput?.searchResultSongs ?? [])
     }
 }
